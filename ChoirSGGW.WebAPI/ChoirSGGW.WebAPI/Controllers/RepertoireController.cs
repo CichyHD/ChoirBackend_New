@@ -1,4 +1,6 @@
-﻿using ChoirSGGW.Domain.Services.Interfaces;
+﻿using AutoMapper;
+using ChoirSGGW.Domain.Services.Interfaces;
+using ChoirSGGW.WebAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +19,15 @@ namespace ChoirSGGW.WebAPI.Controllers
         }
 
         // GET api/values
-        public IEnumerable<string> Get()
+        public IEnumerable<RepertoireDTO> Get()
         {
-            return new string[] { "value1", "value2" };
+            return Mapper.Map<IEnumerable<RepertoireDTO>>(repertoireService.GetAll());
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public RepertoireDTO Get(int id)
         {
-            return "value";
+            return Mapper.Map<RepertoireDTO>(repertoireService.GetById(id));
         }
 
         // POST api/values
@@ -41,6 +43,8 @@ namespace ChoirSGGW.WebAPI.Controllers
         // DELETE api/values/5
         public void Delete(int id)
         {
+            var tmp = repertoireService.GetById(id);
+            repertoireService.Delete(tmp);
         }
     }
 }

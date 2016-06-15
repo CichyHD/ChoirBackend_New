@@ -8,5 +8,6 @@ namespace ChoirSGGW.Domain.Services.Generic
         void Delete(T entity);
         System.Collections.Generic.IEnumerable<T> GetAll();
         void Update(T entity);
+        T GetById(int id);
     }
 }

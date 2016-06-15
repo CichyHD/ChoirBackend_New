@@ -3,6 +3,7 @@ using ChoirSGGW.DataAccess.UnitOfWorkk;
 using ChoirSGGW.Entities.Models.BasicModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ChoirSGGW.Domain.Services.Generic
 {
@@ -44,6 +45,11 @@ namespace ChoirSGGW.Domain.Services.Generic
         public virtual IEnumerable<T> GetAll()
         {
             return _repository.GetAll();
+        }
+
+        public T GetById(int id)
+        {
+            return _repository.FindBy(x => x.Id == id).FirstOrDefault();
         }
     }
 }

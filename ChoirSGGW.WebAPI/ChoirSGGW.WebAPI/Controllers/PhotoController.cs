@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using ChoirSGGW.WebAPI.Models;
+using AutoMapper;
 
 namespace ChoirSGGW.WebAPI.Controllers
 {
@@ -17,15 +19,15 @@ namespace ChoirSGGW.WebAPI.Controllers
         }
 
         // GET api/values
-        public IEnumerable<string> Get()
+        public IEnumerable<PhotoDTO> Get()
         {
-            return new string[] { "value1", "value2" };
+            return Mapper.Map<IEnumerable<PhotoDTO>>(photoService.GetAll());
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public PhotoDTO Get(int id)
         {
-            return "value";
+            return Mapper.Map<PhotoDTO>(photoService.GetById(id));
         }
 
         // POST api/values
@@ -41,6 +43,8 @@ namespace ChoirSGGW.WebAPI.Controllers
         // DELETE api/values/5
         public void Delete(int id)
         {
+            var tmp = photoService.GetById(id);
+            photoService.Delete(tmp);
         }
     }
 }

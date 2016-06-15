@@ -78,6 +78,8 @@ namespace ChoirSGGW.WebAPI.Controllers
         /// <param name="id"></param>
         public void Delete(int id)
         {
+            var tmp = concertService.GetById(id);
+            concertService.Delete(tmp);
         }
     }
 }
