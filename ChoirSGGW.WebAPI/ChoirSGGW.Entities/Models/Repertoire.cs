@@ -13,13 +13,11 @@ namespace ChoirSGGW.Entities.Models
     [Table("Repertoires")]
     public class Repertoire : VisibilityModel
     {
-        [Required, MaxLength(50)]
-        public string SongName { get; set; }
-
         public string Artist { get; set; }
 
         public string Description { get; set; }
 
+        [Required, MaxLength(50)]
         public string Title { get; set; }
 
         public string Genre { get; set; }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ChoirSGGW.Domain.Services.Interfaces;
+using ChoirSGGW.Entities.Models;
 using ChoirSGGW.WebAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,18 @@ namespace ChoirSGGW.WebAPI.Controllers
         // POST api/values
         public void Post([FromBody]string value)
         {
+            repertoireService.Create(
+            Mapper.Map<Repertoire>(
+            new RepertoireDTO()
+            {
+                Album = "sweet album",
+                Artist = "Justin Bieber",
+                Description = "super śliczna piosenka",
+                Genre = "Pop",
+                Length = "1h",
+                Title = "If i was your boifriend",
+                IsApproved = true
+            }));
         }
 
         // PUT api/values/5
