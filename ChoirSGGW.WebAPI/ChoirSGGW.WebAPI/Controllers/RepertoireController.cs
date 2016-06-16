@@ -22,7 +22,8 @@ namespace ChoirSGGW.WebAPI.Controllers
         // GET api/values
         public IEnumerable<RepertoireDTO> Get()
         {
-            return Mapper.Map<IEnumerable<RepertoireDTO>>(repertoireService.GetAll());
+            var temp = Mapper.Map<IEnumerable<RepertoireDTO>>(repertoireService.GetAll());
+            return temp;
         }
 
         // GET api/values/5
@@ -38,12 +39,12 @@ namespace ChoirSGGW.WebAPI.Controllers
             Mapper.Map<Repertoire>(
             new RepertoireDTO()
             {
-                Album = "sweet album",
-                Artist = "Justin Bieber",
-                Description = "super śliczna piosenka",
-                Genre = "Pop",
-                Length = "1h",
-                Title = "If i was your boifriend",
+                album = "sweet album",
+                artist = "Justin Bieber",
+                description = "super śliczna piosenka",
+                genre = "Pop",
+                length = "1h",
+                title = "If i was your boifriend",
                 IsApproved = true
             }));
         }
