@@ -20,5 +20,7 @@ namespace ChoirSGGW.Domain.Services
         {
             this.concertRepository = concertRepository;
         }
+
+
     }
 }

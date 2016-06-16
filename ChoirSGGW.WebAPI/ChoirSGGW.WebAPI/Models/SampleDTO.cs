@@ -10,6 +10,9 @@ namespace ChoirSGGW.WebAPI.Models
 {
     public class SampleDTO : VisibilityModelDTO
     {
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public string Description { get; set; }
         public ClotheTypesDTO ClotheType { get; set; }
         public int IsOpenToAll { get; set; }
     }

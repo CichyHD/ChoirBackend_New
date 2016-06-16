@@ -7,9 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ChoirSGGW.WebAPI.Controllers
 {
+    [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
     public class ConcertController : ApiController
     {
         private readonly IConcertService concertService;
@@ -23,6 +25,7 @@ namespace ChoirSGGW.WebAPI.Controllers
         /// Retrieve list of Concerts
         /// </summary>
         /// <returns></returns>
+        [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
         public IEnumerable<ConcertDTO> Get()
         {
             return Mapper.Map<IEnumerable<ConcertDTO>>(concertService.GetAll());
@@ -33,9 +36,10 @@ namespace ChoirSGGW.WebAPI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
         public ConcertDTO Get(int id)
         {
-            var temp = Mapper.Map<IEnumerable<ConcertDTO>>(concertService.GetAll()).First();
+            var temp = Mapper.Map<ConcertDTO>(concertService.GetById(id));
             return temp;
         }
 

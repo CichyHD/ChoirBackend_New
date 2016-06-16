@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using ChoirSGGW.WebAPI.Models;
+using System.Web.Http.Cors;
+using AutoMapper;
 
 namespace ChoirSGGW.WebAPI.Controllers
 {
+    [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
     public class SampleController : ApiController
     {
         readonly ISampleService sampleService;
@@ -17,15 +21,17 @@ namespace ChoirSGGW.WebAPI.Controllers
         }
 
         // GET api/values
-        public IEnumerable<string> Get()
+        [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
+        public IEnumerable<SampleDTO> Get()
         {
-            return new string[] { "value1", "value2" };
+            return Mapper.Map<IEnumerable<SampleDTO>>(sampleService.GetAll());
         }
 
         // GET api/values/5
-        public string Get(int id)
+        [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
+        public SampleDTO Get(int id)
         {
-            return "value";
+            return Mapper.Map<SampleDTO>(sampleService.GetById(id));
         }
 
         // POST api/values
