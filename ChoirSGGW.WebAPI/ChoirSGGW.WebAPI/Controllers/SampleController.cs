@@ -7,6 +7,7 @@ using System.Web.Http;
 using ChoirSGGW.WebAPI.Models;
 using System.Web.Http.Cors;
 using AutoMapper;
+using ChoirSGGW.Entities.Models;
 
 namespace ChoirSGGW.WebAPI.Controllers
 {
@@ -37,6 +38,14 @@ namespace ChoirSGGW.WebAPI.Controllers
         // POST api/values
         public void Post([FromBody]string value)
         {
+            sampleService.Create(
+            Mapper.Map<Sample>(new SampleDTO()
+            {
+                Name = "Jakaś tam próba",
+                Description = "Opis próby",
+                IsOpenToAll = 1,
+                Location = "Warsaw Centrum"
+            }));
         }
 
         // PUT api/values/5
