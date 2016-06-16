@@ -12,6 +12,7 @@ namespace ChoirSGGW.WebAPI.Models
 {
     public class RepertoireDTO : VisibilityModelDTO
     {
+        public int id { get; set; }
         public string artist { get; set; }
         public string description { get; set; }
         public string title { get; set; }

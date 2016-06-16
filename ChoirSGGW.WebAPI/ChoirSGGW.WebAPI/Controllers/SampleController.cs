@@ -22,17 +22,16 @@ namespace ChoirSGGW.WebAPI.Controllers
         }
 
         // GET api/values
-        [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
         public IEnumerable<SampleDTO> Get()
         {
             return Mapper.Map<IEnumerable<SampleDTO>>(sampleService.GetAll());
         }
 
         // GET api/values/5
-        [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
         public SampleDTO Get(int id)
         {
-            return Mapper.Map<SampleDTO>(sampleService.GetById(id));
+            var temp = Mapper.Map<SampleDTO>(sampleService.GetById(id));
+            return temp;
         }
 
         // POST api/values
@@ -41,10 +40,10 @@ namespace ChoirSGGW.WebAPI.Controllers
             sampleService.Create(
             Mapper.Map<Sample>(new SampleDTO()
             {
-                Name = "Jakaś tam próba",
-                Description = "Opis próby",
-                IsOpenToAll = 1,
-                Location = "Warsaw Centrum"
+                name = "Jakaś tam próba",
+                description = "Opis próby",
+                isOpenToAll = 1,
+                location = "Warsaw Centrum"
             }));
         }
 
